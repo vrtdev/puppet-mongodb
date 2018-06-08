@@ -175,6 +175,7 @@ class Puppet::Provider::Mongodb < Puppet::Provider
 
     # Dirty hack to remove JavaScript objects
     out.gsub!(%r{\w+\((\d+).+?\)}, '\1') # Remove extra parameters from 'Timestamp(1462971623, 1)' Objects
+    out.gsub!(%r{\w+\((.+?)\)}, '\1')
 
     out.gsub!(%r{^Error\:.+}, '')
     out.gsub!(%r{^.*warning\:.+}, '') # remove warnings if sslAllowInvalidHostnames is true
